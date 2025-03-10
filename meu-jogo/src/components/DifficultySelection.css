@@ -1,0 +1,58 @@
+
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0; /* Posição inicial */
+  }
+  100% {
+    background-position: 100% 0; /* Move a imagem para a direita */
+  }
+}
+
+.difficulty-selection {
+  display: flex;
+  justify-content: center; /* Centraliza os itens */
+  flex-direction: column;
+  align-items: center; /* Alinha verticalmente no centro */
+  height: 80vh; /* Define a altura como 80% da altura da tela */
+  width: 80vh; /* Define a largura como 80% da altura da tela */
+  aspect-ratio: 1 / 1; /* Garante que o contêiner seja um quadrado */
+  background: url("../assets/Nuvem.png") no-repeat center center; /* Imagem de fundo */
+  background-color: #00b7ef; /* Azul céu claro */
+  animation: moveBackground 10s linear infinite; /* Animação da imagem de fundo */
+  color: white;
+  border-radius: 20px; /* Bordas arredondadas */
+  border: 10px solid #666566; /* Borda cinza */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+  overflow: hidden; /* Impede que o conteúdo saia do contêiner */
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+  margin-top: 200px;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+.difficulty-options {
+  display: flex;
+  flex-direction: column; /* Alinha os botões verticalmente */
+  gap: 10px; /* Espaçamento entre os botões */
+  z-index: 10; /* Garante que os botões fiquem acima de outros elementos */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #7F3E00; /* Cor do botão */
+  color: #C08E0E; /* Cor do texto do botão */
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #00a0d1; /* Cor do botão ao passar o mouse */
+}

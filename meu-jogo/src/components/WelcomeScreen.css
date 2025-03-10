@@ -1,0 +1,61 @@
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #195a6e; /* Azul céu claro */
+}
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Define o tamanho do quadrado */
+  width: 80vh;
+  aspect-ratio: 1 / 1; /* Garante que seja um quadrado */
+  background: url("/src/assets/background.png") no-repeat center center/cover; /* Imagem de fundo */
+  color: #00b7ef;
+  border: 10px solid #666566; /* Borda cinza */
+  border-radius: 20px; /* Bordas levemente arredondadas */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+}
+
+.welcome-title {
+  font-family: "Press Start 2P", sans-serif; /* Substitua por uma fonte específica de aventura */
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-top: 300px;
+}
+
+.play-image {
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 20px;
+  animation: float 3s ease-in-out infinite; /* Animação aplicada somente ao botão */
+}
+
+.play-image:hover {
+  transform: scale(1.8); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Animação para flutuar */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Movimento sutil */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

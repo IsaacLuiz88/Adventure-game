@@ -1,0 +1,51 @@
+services:
+  # frontend:
+  #   build: ./meu-jogo
+  #   ports:
+  #     - "80"
+  #   container_name: meu-front
+  #   networks:
+  #     - redinha
+
+  backend:
+    build: ./meu-server
+    env_file: ./meu-server/.env
+    ports:
+      - "3001"
+    container_name: meu-back
+    networks: 
+      redinha:
+        aliases:
+          - meu-back
+  database:
+    image: mongo:latest
+    ports:
+      - "27017"
+    container_name: meu-banco
+    networks: 
+      - redinha 
+  proxy:
+    build: ./proxy
+    ports:
+      - "8080:80"
+    container_name: meu-proxy
+    networks: 
+      redinha:
+        aliases:
+          - meu-proxy
+
+  # prometheus:
+  #   container_name: ouroprometheus
+  #   user: root
+  #   image: prom/prometheus:latest
+  #   volumes:
+  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   ports:
+  #     - "9090:9090"
+  #   networks:
+  #     - redinha
+networks:
+  redinha: 
+    driver: bridge 
+
+    

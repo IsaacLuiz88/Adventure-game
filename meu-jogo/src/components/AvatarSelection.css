@@ -1,0 +1,95 @@
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #195a6e; /* Azul de fundo */
+}
+
+.avatar-selection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Define o tamanho do quadrado */
+  width: 80vh;
+  aspect-ratio: 1 / 1; /* Garante que seja um quadrado */
+  background-color: #00b7ef; /* Azul claro */
+  border: 10px solid #666566; /* Borda cinza */
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+  color: #333;
+  font-family: "Press Start 2P", sans-serif;
+  overflow: hidden; /* Evita que o conteúdo ultrapasse o contêiner */
+}
+
+.avatar-selection h1 {
+  font-size: 24px; /* Ajuste para o tamanho desejado */
+  margin: 0; /* Remove qualquer margem padrão */
+}
+
+.avatar-options {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Espaçamento entre os avatares */
+  margin-top: 20px;
+}
+
+.avatar {
+  margin: 0 30px;
+  text-align: center;
+  cursor: pointer;
+  overflow: visible; /* Permite que a imagem expanda além dos limites do container */
+  position: relative; /* Necessário para o efeito de hover funcionar corretamente */
+}
+
+.avatar h2 {
+  margin-top: 50px;
+}
+
+.avatar img {
+  width: 100px; /* Ajuste o tamanho para caber dentro do espaço */
+  height: 100px;
+  border-radius: 10px; /* Bordas arredondadas */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transform-origin: center; /* Define o centro como ponto de origem do zoom */
+}
+
+.avatar img:hover {
+  transform: scale(1.1); /* Apenas um pequeno zoom ao passar o mouse */
+}
+
+.avatar img.selected {
+  transform: scale(1.5); /* Zoom na imagem quando selecionada */
+}
+
+input {
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff; /* Cor do botão */
+  color: #00b7ef; /* Cor do texto */
+  font-family: "Press Start 2P", sans-serif;
+  transition: transform 0.3s;
+}
+
+button:hover {
+  transform: scale(1.2);
+}

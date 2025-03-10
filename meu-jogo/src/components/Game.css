@@ -1,0 +1,158 @@
+
+/* src/components/Game.css */
+
+/* Garantir que o body e html ocupem toda a tela */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #195a6e; /* Azul de fundo */
+}
+
+/* Contêiner principal do jogo (quadrado) */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Manter a Milta acima dos blocos */
+  height: 80vh; /* Define a altura como 80% da altura da tela */
+  width: 80vh; /* Define a largura como 80% da altura da tela */
+  aspect-ratio: 1 / 1; /* Garante que o contêiner seja um quadrado */
+  background-color: #00b7ef;
+  background-size: cover; /* Para cobrir todo o contêiner */
+  background-position: center;
+  background-repeat: no-repeat; /* Evita repetição */
+  position: relative;
+  overflow: hidden; /* Impede que os blocos saiam da tela */
+  border-radius: 20px; /* Bordas arredondadas */
+  border: 10px solid #666566; /* Borda cinza */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Barra de Status */
+.status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #7F3E00;
+  font-size: 18px;
+  z-index: 10; /* Barra de status acima de outros elementos */
+}
+
+/* Blocos (as peças do jogo) */
+.blocks-container {
+  position: absolute;
+  bottom: 0; /* Coloca os blocos na parte inferior */
+  width: 100%; /* Faz os blocos ocuparem toda a largura da tela */
+  height: 100px; /* Ajuste conforme necessário */
+  display: flex;
+  align-items: flex-end; /* Alinha os blocos na parte inferior */
+  overflow: hidden; /* Esconde blocos que saem da tela */
+  z-index: 5;
+}
+
+.block {
+  width: 180px; /* Ajuste o tamanho adequado dos blocos */
+  height: 180px;
+  margin: 0 20px; /* Espaçamento horizontal entre os blocos */
+  position: relative;
+}
+
+.block img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilo para a Milta (Avatar do jogador) */
+.game-avatar {
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+  position: absolute; /* Permite o posicionamento absoluto */
+  bottom: 0; /* A Milta ficará na parte inferior */
+  left: 50px; /* Posição inicial da Milta */
+  z-index: 100; /* Garante que a Milta fique acima dos blocos */
+}
+
+/* Efeito de Pulo */
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px); /* Altura do pulo */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Efeito de Pulo (adicional) */
+.game-avatar.jumping {
+  animation: jump 0.5s ease-out;
+}
+/* Game.css */
+
+
+.game-over div {
+  font-size: 40px; /* Tamanho da fonte */
+  margin: 10px 0; /* Espaçamento entre as linhas */
+  text-align: center;
+  
+  
+   /* Centraliza o texto */
+}
+
+/* Adicione uma imagem de fundo ao corpo do jogo */
+
+.game-over {
+  background-image: url('../assets/placar.png'); /* Caminho para sua imagem de fundo */
+  background-size: 140vh 100vw; /* Aumenta a imagem em 20% */
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over > div {
+  text-align: center;
+  color: white;
+  padding-left: 6vw;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1vw;
+  padding-top: 8vw;
+  font-size: 1vw;
+}
+
+.game-over > div > button {
+  padding: "0.5vw 0.5vh";
+  font-size: "2vh";
+  cursor: "pointer";
+  border: "none";
+  border-radius: "0.4vw";
+  background-color: "white";
+  color: "#00b7ef";
+  transition: "background-color 0.3s";
+};
+
+.game-over h1 {
+  color: #333;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 1.5rem; /* Tamanho do título */
+}
+
+.game-over p {
+  font-size: 1.rem;
+  font-family: "Poppins", sans-serif; /* Tamanho do texto */
+}
+
