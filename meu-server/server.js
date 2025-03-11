@@ -7,13 +7,19 @@ import { Score } from './model.js';
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: '*'
+    origin:'*',
+    Methods: 'GET, POST',
+    allowedHeaders: 'Content-Type'
 }))
 console.log('cheguei aqui')
 connectToDatabase()
 console.log('cheguei aqui2')
 
-
+// Suas rotas aqui
+app.post('/api', (req, res) => {
+    // Lógica para salvar o score
+    res.json({ success: true });
+  });
 
 app.post('/', (req, res) => {
     const score = req.body;
@@ -37,5 +43,5 @@ app.get('/max', (req, res) => {
 
 
 app.listen(process.env.PORT, () => {
-    console.log('Server is running on port 3000');
+    console.log('Server is running on port 3001');
 });

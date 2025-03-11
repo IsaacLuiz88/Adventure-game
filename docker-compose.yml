@@ -1,26 +1,24 @@
 services:
-  # frontend:
-  #   build: ./meu-jogo
-  #   ports:
-  #     - "80"
-  #   container_name: meu-front
-  #   networks:
-  #     - redinha
+  frontend:
+    build: ./meu-jogo
+    ports:
+      - "3000:80"
+    container_name: meu-front
+    networks:
+      - redinha
 
+#proxy reverso(porta 3001 declarada no env). Ele acessa o banco
   backend:
     build: ./meu-server
     env_file: ./meu-server/.env
-    ports:
-      - "3001"
     container_name: meu-back
     networks: 
       redinha:
         aliases:
           - meu-back
+
   database:
     image: mongo:latest
-    ports:
-      - "27017"
     container_name: meu-banco
     networks: 
       - redinha 

@@ -56,7 +56,7 @@ nickname: {type: String}
 */
 
 export const salvarScore = async (score, totalJumpedBlocks, totalBombasPuladas, totalBombasExplodidas, totalEnergiaCapturada, nickname) => {
-    const response = await fetch('http://localhost:8080', {
+    const response = await fetch('http://localhost:3001', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
