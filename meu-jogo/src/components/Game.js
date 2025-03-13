@@ -56,7 +56,8 @@ nickname: {type: String}
 */
 
 export const salvarScore = async (score, totalJumpedBlocks, totalBombasPuladas, totalBombasExplodidas, totalEnergiaCapturada, nickname) => {
-    const response = await fetch('http://localhost:3001', {
+  //a rota ta sendo o back end com a porta exposta. a rota save eh uma redundancia(o GET / faz a msm coisa)
+    const response = await fetch('http://localhost:3001/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -325,5 +326,4 @@ const Game = ({ selectedAvatar, difficulty, nickname,homeScreen  }) => {
 };
 
 export default Game;
-
 

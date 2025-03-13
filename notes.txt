@@ -1,0 +1,7 @@
+Endereco de save do Frontend: localhost:3001
+
+alguns enderecos do proxy sao para debug: /back/all
+
+O prometheus funciona, por enquanto apenas no atraves do HOST, e nao do container
+
+Existe uma redundancia de rotas no componente jogo no Frontend

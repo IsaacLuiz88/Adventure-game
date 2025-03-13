@@ -1,22 +1,29 @@
 services:
   frontend:
-    build: ./meu-jogo
+    build: 
+      context : ./meu-jogo
+      dockerfile: Dockerfile
+    container_name: meu-front
     ports:
       - "3000:80"
-    container_name: meu-front
     networks:
-      - redinha
+      redinha:
+        aliases:
+          - meu-front
 
 #proxy reverso(porta 3001 declarada no env). Ele acessa o banco
   backend:
-    build: ./meu-server
+    build: 
+      context : ./meu-server
+      dockerfile: Dockerfile
     env_file: ./meu-server/.env
     container_name: meu-back
-    networks: 
+    ports:
+      - "3001:3001" #expondo a porta pra facilitar a feat de salvar no bd
+    networks:
       redinha:
         aliases:
           - meu-back
-
   database:
     image: mongo:latest
     container_name: meu-banco
@@ -32,16 +39,16 @@ services:
         aliases:
           - meu-proxy
 
-  # prometheus:
-  #   container_name: ouroprometheus
-  #   user: root
-  #   image: prom/prometheus:latest
-  #   volumes:
-  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   ports:
-  #     - "9090:9090"
-  #   networks:
-  #     - redinha
+  prometheus:
+     container_name: ouroprometheus
+     user: root
+     image: prom/prometheus:latest
+     volumes:
+       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+     ports:
+       - "9090:9090"
+     networks:
+      - redinha
 networks:
   redinha: 
     driver: bridge 
