@@ -1,5 +1,5 @@
-# Usamos uma imagem oficial do Node.js como base
-FROM node:18-alpine 
+# Fase de build (Node.js)
+FROM node:18-alpine AS build
 
 # Definimos o diretório de trabalho dentro do container
 WORKDIR /app
@@ -8,19 +8,19 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalamos as dependências
-RUN npm install 
+RUN npm install
 
 # Copiamos o restante dos arquivos do projeto para dentro do container
 COPY . .
 
 # Compilamos o projeto para produção
-RUN npm run build 
+RUN npm run build
 
-# Usamos o servidor Nginx para servir os arquivos estáticos
+# Fase de produção (Nginx)
 FROM nginx:alpine
 
-# Copiamos os arquivos compilados para a pasta de hospedagem do Nginx
-COPY --from=0 /app/build /usr/share/nginx/html
+# Copiamos os arquivos compilados da fase de build para a pasta de hospedagem do Nginx
+COPY --from=build /app/build /usr/share/nginx/html
 
 # Expomos a porta 80 para acesso ao frontend
 EXPOSE 80

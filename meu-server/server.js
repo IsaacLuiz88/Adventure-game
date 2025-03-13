@@ -15,11 +15,6 @@ console.log('cheguei aqui')
 connectToDatabase()
 console.log('cheguei aqui2')
 
-// Suas rotas aqui
-app.post('/api', (req, res) => {
-    // Lógica para salvar o score
-    res.json({ success: true });
-  });
 
 app.post('/', (req, res) => {
     const score = req.body;
@@ -28,7 +23,14 @@ app.post('/', (req, res) => {
     .then(() => res.send('Score salvo'))
     .catch((e) => res.send('Erro ao salvar score'))
 });
-
+//reedundancia para testar se o erro é no endpoint
+app.post('/save', (req, res) => {
+    const score = req.body;
+    console.log(score)
+    Score.insertOne(score)
+    .then(() => res.send('Score salvo'))
+    .catch((e) => res.send('Erro ao salvar score'))
+});
 app.get('/all', (req, res) => {
     Score.find()
     .then((scores) => res.send(scores))
